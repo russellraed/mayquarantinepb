@@ -24,8 +24,6 @@
         padding: 0;
         font-weight: 200;
         color: #fff;
-        font-size: 0.875em;
-        letter-spacing: 0.063em;
         margin: 0;
         text-align: center;
       }
@@ -41,6 +39,7 @@
         position: absolute;
         left: 0;
         top: 0;
+        padding: 40px;
 
         background-image: linear-gradient(
           to right top,
@@ -81,6 +80,16 @@
         color: #ffffff;
         text-decoration: none;
         font-weight: 400;
+      }
+
+      @media only screen and (max-width: 600px) {
+        body {
+          font-size: 11px;
+        }
+
+        #sagot {
+          font-size: 60px;
+        }
       }
 
       @media print {
