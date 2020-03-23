@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>mayquarantinepb?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        font-family: "Montserrat", sans-serif;
+        background: white;
+        padding: 0;
+        font-weight: 200;
+        color: #fff;
+        font-size: 0.875em;
+        letter-spacing: 0.063em;
+        margin: 0;
+        text-align: center;
+      }
+      #sagot {
+        font-size: 120px;
+        margin-top: 80px;
+        margin-bottom: 40px;
+        font-weight: 500;
+      }
+      .francis-m {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        background-image: linear-gradient(
+          to right top,
+          #3564ac,
+          #0980c4,
+          #009cd6,
+          #00b7e3,
+          #12d2eb
+        );
+      }
+      button {
+        padding: 10px 20px;
+        text-align: center;
+        border-radius: 3px;
+        -webkit-box-shadow: 10px 10px 14px 1px rgba(00, 00, 00, 0.2);
+        box-shadow: 6px 5px 13px 1px rgba(00, 00, 00, 0.2);
+        border: solid 1px #085d7f;
+        color: #106c88;
+        margin-top: 30px;
+      }
+      #parokya {
+        color: #ffffff66;
+      }
+      .paa {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.3);
+        padding: 11px 15px;
+        font-size: 12px;
+        color: #fff;
+        overflow: hidden;
+        position: fixed;
+        max-width: 100%;
+        overflow: hidden;
+        bottom: 0;
+        margin: 0;
+      }
+      .paa a {
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 400;
+      }
+
+      @media print {
+        body,
+        #parokya {
+          color: black;
+        }
+
+        #tanong {
+          margin: 50px 0 20px 0;
+          font-size: 40px;
+          font-weight: normal;
+        }
+
+        #sagot {
+          margin: 20px 0 50px 0;
+          font-size: 80px;
+          font-weight: normal;
+        }
+
+        .francis-m {
+          background: none;
+        }
+
+        .paa,
+        a,
+        button {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="francis-m">
+      <div class="gloc-9">
+        <p id="tanong">may quarantine pb?</p>
+        <p id="sagot"></p>
+        <p id="baka-naman"></p>
+        <p id="parokya"></p>
+        <button id="pindutin-moko-pangalawa">
+          pindutin mo ako para kumuha ng panibagong mensahe.
+        </button>
+
+        <button id="pindutin-moko">
+          pindutin mo ako para i-print at ma-ipaskil sa labas.
+        </button>
+      </div>
+      <p class="paa">
+        May maidadag-dag ka bang random message? Paki-email kay
+        <a href="mailto:russellraed@gmail.com">russellraed@gmail.com</a>.
+      </p>
+    </div>
+  </body>
+  <script>
+    var countDownDate = new Date("Apr 14, 2020 00:00:00").getTime();
+    var random = [
+      "wag po munang lumabas please.",
+      "minsan Quarantine, minsan Enhanced Quaratine, ibang araw Extreme Enhanced Quaratine.",
+      "stay at home po muna. netflix po muna kayo ngayong araw.",
+      "stay at home po muna. ML muna kayo ngayong araw.",
+      "implement social distancing please.",
+      "always wash your hand please."
+    ];
+    var randomMessage = random[Math.floor(Math.random() * random.length)];
+
+    document
+      .getElementById("pindutin-moko")
+      .addEventListener("click", function() {
+        window.print();
+      });
+
+    document
+      .getElementById("pindutin-moko-pangalawa")
+      .addEventListener("click", function() {
+        window.location.reload();
+      });
+
+    var x = setInterval(function() {
+      var now = new Date().getTime();
+
+      if (now <= countDownDate) {
+        document.getElementById("sagot").innerHTML = "meron pa";
+        document.getElementById("baka-naman").innerHTML = randomMessage;
+      } else {
+        document.getElementById("sagot").innerHTML = "wala na po.";
+        document.getElementById("baka-naman").innerHTML =
+          "Mag-ingat padin please.";
+      }
+
+      var distansya = countDownDate - now;
+      var araw = Math.floor(distansya / (1000 * 60 * 60 * 24));
+      var oras = Math.floor(
+        (distansya % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      var minuto = Math.floor((distansya % (1000 * 60 * 60)) / (1000 * 60));
+      var segundo = Math.floor((distansya % (1000 * 60)) / 1000);
+
+      document.getElementById("parokya").innerHTML =
+        araw +
+        " na araw, " +
+        oras +
+        " na oras, " +
+        minuto +
+        " na minuto, at " +
+        segundo +
+        " na segundo na lang!";
+
+      if (distansya < 0) {
+        clearInterval(x);
+        document.getElementById("parokya").innerHTML = "";
+      }
+    }, 1000);
+  </script>
+</html>
